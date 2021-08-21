@@ -4,14 +4,14 @@ import java.util.concurrent.Executors;
 
 public class Main {
 
-    static String srcFolder = "src/main/resources/imgSrc";
-    static String dstFolder = "src/main/resources/imgDst";
+    static final String srcFolder = "src/main/resources/imgSrc";
+    static final String dstFolder = "src/main/resources/imgDst";
+    static final int cores = Runtime.getRuntime().availableProcessors();
 
     //set new width for resizing images
     static int newWidth = 300;
-    static final int cores = Runtime.getRuntime().availableProcessors();
     static File srcDir = new File(srcFolder);
-    static File[] files = srcDir.listFiles();
+    static File[] srcFiles = srcDir.listFiles();
 
 
     public static void main(String[] args) throws InterruptedException {
@@ -19,7 +19,7 @@ public class Main {
         //Multi-thread
         long start = System.currentTimeMillis();
         ExecutorService executorService = Executors.newFixedThreadPool(cores);
-        for (File file : files
+        for (File file : srcFiles
         ) {
             executorService.submit(new ImgResizerMultiThread(file, dstFolder, newWidth));
         }
