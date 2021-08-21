@@ -5,4 +5,4 @@
       //set new width for resizing images
        static int newWidth = 300;
 - start main();
-**- finally u got resized copies of source images in src folder "imgDst"**
+- finally u got resized copies of source images in src folder "imgDst"
